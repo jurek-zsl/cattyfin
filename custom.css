@@ -434,3 +434,14 @@ h1, h2, h3, .sectionTitle {
 * {
     text-shadow: none !important;
 }
+
+/* --- Video Player OSD: Transparent Upper Bar --- */
+.videoOsdTop, .videoOsdHeader, .osdTitle, .upNextDialog-poster-card {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Additional player overlay elements that might have backgrounds */
+.videoOsdTop * {
+    background: transparent !important;
+}
