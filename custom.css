@@ -1,0 +1,437 @@
+/*
+ * Catppuccin Macchiato for Jellyfin (v29 - Final)
+ *
+ * A cat-based, TUI-inspired theme with the default system cursor.
+ * Created by GitHub Copilot.
+ */
+
+/* --- Import a TUI-style font (optional, but recommended) --- */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+/* --- Catppuccin Macchiato Color Palette --- */
+:root {
+    --accent-color: var(--mauve) !important; /* Global override for any missed blue */
+    --rosewater: #f4dbd6;
+    --flamingo: #f0c6c6;
+    --pink: #f5bde6;
+    --mauve: #c6a0f6; /* The primary purple color */
+    --red: #ed8796;
+    --maroon: #ee99a0;
+    --peach: #f5a97f;
+    --yellow: #eed49f;
+    --green: #a6da95;
+    --teal: #8bd5ca;
+    --sky: #91d7e3;
+    --sapphire: #7dc4e4;
+    --blue: #8aadf4;
+    --lavender: #b7bdf8;
+    --text: #cad3f5;
+    --subtext1: #b8c0e0;
+    --subtext0: #a5adce;
+    --overlay2: #939ab7;
+    --overlay1: #8087a2;
+    --overlay0: #6e738d;
+    --surface2: #5b6078;
+    --surface1: #494d64;
+    --surface0: #363a4f;
+    --base: #24273a;   /* Main background */
+    --mantle: #1e2030; /* Slightly darker bg */
+    --crust: #181926;  /* Darkest bg */
+}
+
+/* --- Bigger Custom Cat Logo --- */
+.adminDrawerLogo img,
+.loginPageLogo img {
+    content: url(https://i.imgur.com/95Vmjet.png) !important;
+    height: 80px !important;
+    width: auto !important;
+}
+
+.headerLogo {
+    content: url(https://i.imgur.com/95Vmjet.png) !important;
+    height: 55px !important;
+    width: auto !important;
+}
+
+.imgLogoIcon {
+     content: url(https://i.imgur.com/95Vmjet.png) !important;
+}
+
+.pageTitleWithLogo {
+    background-image: url(https://i.imgur.com/95Vmjet.png) !important;
+    background-size: 130px !important;
+    background-repeat: no-repeat !important;
+    padding-left: 145px !important;
+    background-position: left center !important;
+}
+.pageTitleWithLogo .pageTitle {
+    display: none;
+}
+
+/* --- General Body & Layout --- */
+body, #app, .backgroundContainer, .backdropImage {
+    background: var(--base) !important;
+    color: var(--text) !important;
+    font-family: 'Fira Code', 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* --- Strictly 90-Degree Corners --- */
+* {
+    border-radius: 0 !important;
+}
+
+/* --- Header & Navigation --- */
+.skinHeader, .mainDrawer, .emby-scroller-container {
+    background: var(--mantle) !important;
+    border-bottom: none !important;
+}
+
+.headerButton:hover, .headerUserButton:hover, .button-flat:hover, .button-link:hover, .navMenuOption:hover, .emby-tab-button:hover {
+    color: var(--text) !important;
+    background-color: var(--surface0) !important;
+}
+
+.headerUserButton {
+    margin-right: 1em !important;
+}
+
+.emby-tab-button.emby-tab-button-active {
+    color: var(--mauve) !important;
+    border-bottom: 2px solid var(--mauve) !important;
+    background-color: transparent !important;
+}
+
+/* --- Add Space Between Home Sections --- */
+.homeSection {
+    margin-bottom: 2em !important;
+}
+
+/* --- Cards, Posters, and Thumbnails --- */
+.card, .cardBox {
+    background-color: var(--crust) !important;
+    border: 1px solid var(--surface0);
+    box-shadow: none !important;
+    transition: none;
+    margin: 0 !important;
+}
+
+.emby-scroller .scroller-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+}
+
+.itemsContainer.vertical-wrap {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+    gap: 1em !important;
+    padding: 1em !important;
+}
+.itemsContainer.vertical-wrap.padded-right-withalphapicker {
+    padding-right: 4em !important;
+}
+.itemsContainer.vertical-wrap .card {
+    width: auto !important;
+    margin: 0 !important;
+}
+
+.alphaPicker {
+    z-index: 10 !important;
+}
+
+
+.cardContent, .cardBox-bottompadded .cardScalable {
+    padding: 0 !important;
+}
+
+.card:hover, .cardBox:hover {
+    transform: none;
+    border: 1px solid var(--mauve) !important;
+}
+
+.cardFooter {
+    padding: 0.5em 1em !important;
+}
+
+/* --- Themed Default Backgrounds --- */
+.defaultCardBackground, .defaultCardBackground1, .defaultCardBackground2, .defaultCardBackground3, .defaultCardBackground4, .defaultCardBackground5 {
+    background-color: var(--surface0) !important;
+}
+.personIcon {
+    color: var(--subtext0) !important;
+}
+
+/* --- Themed Card Overlay Buttons --- */
+.cardOverlayButton {
+    background: rgba(36, 39, 58, 0.8) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--surface1) !important;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.cardOverlayButton:hover {
+    background: var(--surface1) !important;
+    color: var(--mauve) !important;
+    border-color: var(--mauve) !important;
+}
+
+/* --- Scroller Buttons --- */
+.emby-scrollbuttons-button {
+    background: transparent !important;
+    color: var(--text) !important;
+}
+.emby-scrollbuttons-button:hover {
+    background: var(--surface1) !important;
+    color: var(--mauve) !important;
+}
+
+
+/* --- Watched/Played/Episode Counters --- */
+.playedIndicator {
+    background-color: var(--green) !important;
+    width: 100% !important;
+    height: 4px !important;
+}
+
+.newItemCount, .newIndicator, .countIndicator {
+    background-color: var(--mauve) !important;
+    color: var(--crust) !important;
+}
+
+.newIndicator {
+    border-top-color: var(--mauve) !important;
+    border-right-color: var(--mauve) !important;
+}
+
+
+/* --- Buttons, Inputs & Form Elements --- */
+.fab, .button-accent, .button-submit {
+    background-color: var(--mauve) !important;
+    color: var(--crust) !important;
+}
+.fab:hover, .button-accent:hover, .button-submit:hover {
+    background-color: var(--pink) !important;
+    border: 1px solid var(--flamingo);
+}
+
+input[type="text"], input[type="password"], input[type="number"], .emby-select, .select {
+    background: var(--surface0) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--surface1) !important;
+}
+
+input:focus {
+    border-color: var(--mauve) !important;
+    box-shadow: none !important;
+}
+
+/* Force native controls too (helps on settings pages) */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--mauve) !important;
+}
+
+/* Emby-style custom checkboxes: base (unchecked) */
+.emby-checkbox-label:before,
+.emby-radio-label:before {
+  background: var(--surface0) !important;
+  border: 2px solid var(--mauve) !important;
+  border-radius: 2px !important;
+}
+
+/* Emby-style: checked — fill the inside */
+.emby-checkbox:checked + .emby-checkbox-label:before,
+.emby-radio:checked + .emby-radio-label:before {
+  background: var(--mauve) !important;
+  border-color: var(--mauve) !important;
+}
+
+/* Emby-style alternate structure: input + .checkboxOutline (+ label) */
+.emby-checkbox:checked + .checkboxOutline {
+  border-color: var(--mauve) !important;
+  background: var(--mauve) !important;            /* fill the box outline */
+}
+.emby-checkbox:checked + .checkboxOutline:after {
+  background: var(--surface0) !important;          /* tick contrast on mauve fill */
+}
+
+/* If label comes after .checkboxOutline, fill via sibling chain */
+.emby-checkbox:checked + .checkboxOutline + .emby-checkbox-label:before {
+  background: var(--mauve) !important;
+  border-color: var(--mauve) !important;
+}
+
+/* General outline defaults (unchecked) */
+.checkboxOutline {
+  border-color: var(--mauve) !important;
+  background: var(--surface0) !important;
+}
+
+/* Material Design Lite (MDL) variant used in some Jellyfin builds */
+.mdl-checkbox .mdl-checkbox__box-outline {
+  border-color: var(--mauve) !important;
+  background: var(--surface0) !important;
+}
+
+/* MDL when checked: fill + tick */
+.mdl-checkbox.is-checked .mdl-checkbox__box-outline {
+  background: var(--mauve) !important;
+  border-color: var(--mauve) !important;
+}
+.mdl-checkbox.is-checked .mdl-checkbox__tick-outline {
+  background: var(--surface0) !important;          /* tick visible on mauve fill */
+}
+
+/* Extra specificity to win over inline styles or strong selectors */
+body .emby-checkbox:checked + .emby-checkbox-label:before,
+body .emby-checkbox:checked + .checkboxOutline,
+body .emby-checkbox:checked + .checkboxOutline + .emby-checkbox-label:before,
+body .mdl-checkbox.is-checked .mdl-checkbox__box-outline {
+  background: var(--mauve) !important;
+}
+
+/* --- Text Inputs & Textareas --- */
+
+/* Default state */
+.emby-input,
+.emby-textarea {
+    background: var(--surface0) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--mauve) !important;   /* themed border */
+}
+
+.button-flat:hover, .button-link {
+    color: #d8b9ff;
+}
+
+.listItemIcon:not(.listItemIcon-transparent) {
+    background-color: #363a4f;
+}
+
+/* Slider track */
+.mdl-slider::-webkit-slider-runnable-track {
+  background: var(--surface0) !important;
+  border: 1px solid var(--mauve) !important;
+}
+.mdl-slider::-moz-range-track {
+  background: var(--surface0) !important;
+  border: 1px solid var(--mauve) !important;
+}
+
+/* Slider thumb (the draggable circle) */
+.mdl-slider::-webkit-slider-thumb {
+  background: var(--mauve) !important;
+  border: 2px solid var(--mauve) !important;
+}
+.mdl-slider::-moz-range-thumb {
+  background: var(--mauve) !important;
+  border: 2px solid var(--mauve) !important;
+}
+.mdl-slider::-ms-thumb {
+  background: var(--mauve) !important;
+  border: 2px solid var(--mauve) !important;
+}
+
+/* Focused/active state */
+.mdl-slider:focus::-webkit-slider-thumb {
+  background: var(--pink) !important;   /* highlight on focus */
+}
+.mdl-slider:focus::-moz-range-thumb {
+  background: var(--pink) !important;
+}
+
+.collapseContent, .formDialogFooter:not(.formDialogFooter-clear), .formDialogHeader:not(.formDialogHeader-clear), .paperList, .visualCardBox {
+    background-color: #1e2030;
+}
+
+.backgroundContainer, .dialog, .nowPlayingContextMenu, .nowPlayingPlaylist, html {
+    background-color: #24273a;
+}
+
+.emby-checkbox:checked+span+.checkboxOutline, .itemProgressBarForeground {
+    background-color: #c6a0f6;
+}
+
+/* Focused state */
+.emby-input:focus,
+.emby-textarea:focus {
+    border-color: var(--mauve) !important;       /* replace #00a4dc with theme color */
+    box-shadow: none !important;                 /* remove default glow if present */
+    outline: none !important;
+}
+
+
+/* --- List Items & Icons --- */
+.listItem:focus, .listItem:focus-within, .listItem.active, .listItem:hover {
+    background: var(--surface0) !important;
+}
+.listItemIcon {
+    color: var(--mauve) !important;
+}
+
+
+/* --- Login Page --- */
+.loginPage {
+    background: var(--base) !important;
+}
+
+.loginForm, .visualCardBox {
+    background-color: var(--mantle) !important;
+    border: 1px solid var(--surface1);
+}
+
+/* --- Scrollbars --- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--crust);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--surface1);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--overlay1);
+}
+
+/* --- Progress Bars, Sliders & Spinners --- */
+.slider-knob, .mdl-slider__background-upper, .emby-slider-background-upper {
+    background: var(--mauve) !important;
+}
+.mdl-slider__background-lower, .emby-slider-background-lower {
+    background: var(--surface1) !important;
+}
+input[type=range] {
+    accent-color: var(--mauve);
+}
+input[type=range]::-webkit-slider-thumb {
+  background: var(--mauve) !important;
+}
+input[type=range]::-moz-range-thumb {
+  background: var(--mauve) !important;
+}
+
+.progressBarInner {
+    background-color: var(--mauve) !important;
+}
+
+.mdl-spinner__layer-1, .mdl-spinner__layer-2, .mdl-spinner__layer-3, .mdl-spinner__layer-4 {
+    border-color: var(--mauve) !important;
+}
+
+
+/* --- Unified Section Titles --- */
+h1, h2, h3, .sectionTitle {
+    color: var(--mauve) !important;
+    border-bottom: none !important;
+    font-size: 1.2em !important;
+    font-weight: 500 !important;
+    padding-bottom: 5px;
+    padding-left: 1em;
+    margin-bottom: 1em;
+}
+
+* {
+    text-shadow: none !important;
+}
