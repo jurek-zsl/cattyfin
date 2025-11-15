@@ -3,5 +3,5 @@ Jellyfin theme using catpuccin colors with TUI design.
 
 # Installing
 ```
-@import url("https://raw.githubusercontent.com/jurek-zsl/cattyfin/refs/heads/main/custom.css");
+@import url("https://cdn.jsdelivr.net/gh/jurek-zsl/cattyfin@main/custom.css");
 ```
