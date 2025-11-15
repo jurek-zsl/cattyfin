@@ -94,6 +94,14 @@ body, #app, .backgroundContainer, .backdropImage {
     margin-right: 1em !important;
 }
 
+/* Transparent top bar in video player */
+.videoOsdHeader, .osdHeader {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+
 .emby-tab-button.emby-tab-button-active {
     color: var(--mauve) !important;
     border-bottom: 2px solid var(--mauve) !important;
@@ -308,37 +316,39 @@ body .mdl-checkbox.is-checked .mdl-checkbox__box-outline {
     background-color: #363a4f;
 }
 
-/* Slider track */
-.mdl-slider::-webkit-slider-runnable-track {
-  background: var(--surface0) !important;
-  border: 1px solid var(--mauve) !important;
-}
-.mdl-slider::-moz-range-track {
-  background: var(--surface0) !important;
-  border: 1px solid var(--mauve) !important;
-}
-
-/* Slider thumb (the draggable circle) */
-.mdl-slider::-webkit-slider-thumb {
-  background: var(--mauve) !important;
-  border: 2px solid var(--mauve) !important;
-}
-.mdl-slider::-moz-range-thumb {
-  background: var(--mauve) !important;
-  border: 2px solid var(--mauve) !important;
-}
-.mdl-slider::-ms-thumb {
-  background: var(--mauve) !important;
-  border: 2px solid var(--mauve) !important;
+/* WebKit (Chrome, Edge, Safari) */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: var(--mauve) !important;
+    border: 2px solid var(--crust);
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    margin-top: -5px; /* adjust until centered */
 }
 
-/* Focused/active state */
-.mdl-slider:focus::-webkit-slider-thumb {
-  background: var(--pink) !important;   /* highlight on focus */
+/* Firefox */
+input[type=range]::-moz-range-thumb {
+    background: var(--mauve) !important;
+    border: 2px solid var(--crust);
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
 }
-.mdl-slider:focus::-moz-range-thumb {
-  background: var(--pink) !important;
+
+/* Track height */
+input[type=range]::-webkit-slider-runnable-track {
+    height: 4px;
+    background: var(--surface1) !important;
+    border-radius: 2px;
 }
+input[type=range]::-moz-range-track {
+    height: 4px;
+    background: var(--surface1) !important;
+    border-radius: 2px;
+}
+
+
 
 .collapseContent, .formDialogFooter:not(.formDialogFooter-clear), .formDialogHeader:not(.formDialogHeader-clear), .paperList, .visualCardBox {
     background-color: #1e2030;
@@ -398,9 +408,7 @@ body .mdl-checkbox.is-checked .mdl-checkbox__box-outline {
 .slider-knob, .mdl-slider__background-upper, .emby-slider-background-upper {
     background: var(--mauve) !important;
 }
-.mdl-slider__background-lower, .emby-slider-background-lower {
-    background: var(--surface1) !important;
-}
+
 input[type=range] {
     accent-color: var(--mauve);
 }
@@ -415,9 +423,30 @@ input[type=range]::-moz-range-thumb {
     background-color: var(--mauve) !important;
 }
 
-.mdl-spinner__layer-1, .mdl-spinner__layer-2, .mdl-spinner__layer-3, .mdl-spinner__layer-4 {
-    border-color: var(--mauve) !important;
+/* Force Jellyfin loading spinner into a circular ring */
+.mdl-spinner {
+    width: 40px !important;
+    height: 40px !important;
+    border: 4px solid var(--mauve) !important;   /* themed accent */
+    border-top-color: transparent !important;   /* creates the spinning effect */
+    border-radius: 50% !important;              /* circle */
+    animation: spin 1s linear infinite !important;
 }
+
+/* Hide the default square layers */
+.mdl-spinner__layer-1,
+.mdl-spinner__layer-2,
+.mdl-spinner__layer-3,
+.mdl-spinner__layer-4 {
+    display: none !important;
+}
+
+/* Rotation keyframes */
+@keyframes spin {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 
 /* --- Unified Section Titles --- */
@@ -433,15 +462,4 @@ h1, h2, h3, .sectionTitle {
 
 * {
     text-shadow: none !important;
-}
-
-/* --- Video Player OSD: Transparent Upper Bar --- */
-.videoOsdTop, .videoOsdHeader, .osdTitle, .upNextDialog-poster-card {
-    background: transparent !important;
-    background-color: transparent !important;
-}
-
-/* Additional player overlay elements that might have backgrounds */
-.videoOsdTop * {
-    background: transparent !important;
 }
