@@ -101,12 +101,42 @@ body, #app, .backgroundContainer, .backdropImage {
     border: none !important;
 }
 
+/* Watched markers on the timeline */
+.videoOsdBottom .sliderMarker.watched,
+.itemProgressBarForeground .sliderMarker.watched {
+    background-color: #c6a0f6 !important; /* or any color */
+}
+
+.videoOsdBottom, .osdControls {
+    background-color: #ffffff00 !important;
+}
 
 .emby-tab-button.emby-tab-button-active {
     color: var(--mauve) !important;
     border-bottom: 2px solid var(--mauve) !important;
     background-color: transparent !important;
 }
+
+@media (hover: hover) and (pointer: fine) {
+    .paper-icon-button-light:hover:not(:disabled) {
+        background-color: rgba(198, 160, 246, 0.45);
+        color: #c6a0f6;
+    }
+}
+
+/* General bottom player buttons */
+.videoOsdButton, .osdButton {
+    color: var(--text) !important;
+    background-color: var(--surface0) !important;
+}
+
+/* Hover effect */
+.videoOsdButton:hover:not(:disabled),
+.osdButton:hover:not(:disabled) {
+    background-color: rgba(198, 160, 246, 0.45) !important;
+    color: #c6a0f6 !important;
+}
+
 
 /* --- Add Space Between Home Sections --- */
 .homeSection {
